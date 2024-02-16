@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "work_areas",
+  "info": {
+    "singularName": "work-area",
+    "pluralName": "work-areas",
+    "displayName": "Work Areas",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "areaName": {
+      "type": "string"
+    },
+    "areaDescription": {
+      "type": "string"
+    },
+    "areaPrinters": {
+      "type": "json"
+    }
+  }
+}

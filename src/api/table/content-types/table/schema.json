@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tables",
+  "info": {
+    "singularName": "table",
+    "pluralName": "tables",
+    "displayName": "tables",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tableName": {
+      "type": "string"
+    },
+    "tableAvailable": {
+      "type": "boolean"
+    }
+  }
+}

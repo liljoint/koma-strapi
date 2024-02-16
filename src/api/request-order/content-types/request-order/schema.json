@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "request_orders",
+  "info": {
+    "singularName": "request-order",
+    "pluralName": "request-orders",
+    "displayName": "requestOrders"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "orders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order.order"
+    },
+    "table": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::table.table"
+    },
+    "payment": {
+      "type": "decimal"
+    },
+    "tip": {
+      "type": "decimal"
+    },
+    "isCompleted": {
+      "type": "boolean"
+    },
+    "partialPayment": {
+      "type": "decimal"
+    },
+    "vouchers": {
+      "type": "json"
+    },
+    "dateCompleted": {
+      "type": "datetime"
+    },
+    "totalAmount": {
+      "type": "decimal"
+    }
+  }
+}

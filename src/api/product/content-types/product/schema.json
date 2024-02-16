@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "products"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "productName": {
+      "type": "string"
+    },
+    "productPrice": {
+      "type": "integer"
+    },
+    "productAvailable": {
+      "type": "boolean"
+    },
+    "workArea": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::work-area.work-area"
+    }
+  }
+}
