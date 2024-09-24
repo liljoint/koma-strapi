@@ -31,11 +31,11 @@ module.exports = ({ env }) => {
     },
     mysql2: {
       connection: {
-        host: env("DATABASE_HOST", "localhost"),
+        host: env("DATABASE_HOST", "0.0.0.0"),
         port: env.int("DATABASE_PORT", 3306),
-        database: env("DATABASE_NAME", "strapi"),
-        user: env("DATABASE_USERNAME", "strapi"),
-        password: env("DATABASE_PASSWORD", "strapi"),
+        database: env("DATABASE_NAME", "koma"),
+        user: env("DATABASE_USERNAME", "koma"),
+        password: env("DATABASE_PASSWORD", "koma123"),
         ssl: env.bool("DATABASE_SSL", false) && {
           key: env("DATABASE_SSL_KEY", undefined),
           cert: env("DATABASE_SSL_CERT", undefined),

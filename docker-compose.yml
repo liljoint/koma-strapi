@@ -8,7 +8,7 @@ services:
     env_file: .env
     environment:
       DATABASE_CLIENT: ${DATABASE_CLIENT}
-      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_HOST: strapiDB
       DATABASE_PORT: ${DATABASE_PORT}
       DATABASE_NAME: ${DATABASE_NAME}
       DATABASE_USERNAME: ${DATABASE_USERNAME}
@@ -35,7 +35,7 @@ services:
     container_name: strapiDB
     restart: unless-stopped
     env_file: .env
-    image: mysql:latest
+    image: mysql:8.3
     command: --default-authentication-plugin=caching_sha2_password
     environment:
       MYSQL_USER: ${DATABASE_USERNAME}
@@ -57,5 +57,5 @@ volumes:
 
 networks:
   strapi:
-    name: Strapi
+    name: strapi
     driver: bridge
