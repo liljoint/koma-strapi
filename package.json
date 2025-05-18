@@ -9,12 +9,13 @@
   },
   "scripts": {
     "build": "strapi build",
-    "dev": "strapi develop",
+    "dev": "strapi develop --watch-admin",
     "start": "strapi start",
     "strapi": "strapi"
   },
   "dependencies": {
     "@strapi/plugin-cloud": "4.20.1",
+    "@strapi/plugin-documentation": "^5.13.0",
     "@strapi/plugin-i18n": "4.20.1",
     "@strapi/plugin-users-permissions": "4.20.1",
     "@strapi/strapi": "4.20.1",

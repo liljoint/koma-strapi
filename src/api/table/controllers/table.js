@@ -1,9 +1,19 @@
-'use strict';
+"use strict";
+
+const { default: strapiFactory } = require("@strapi/strapi");
 
 /**
  * table controller
  */
 
-const { createCoreController } = require('@strapi/strapi').factories;
+const { createCoreController } = strapiFactory.factories;
+module.exports = createCoreController("api::table.table", ({ strapi }) => ({
+  createAndOpenTable: async (ctx) => {
+    ctx.body;
+    const newOrder = await strapi.entityService.create("api::order.order", {
+      data: {},
+    });
 
-module.exports = createCoreController('api::table.table');
+    return { data: newOrder };
+  },
+}));

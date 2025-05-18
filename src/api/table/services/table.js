@@ -1,9 +1,11 @@
-'use strict';
+"use strict";
+
+const { default: strapiFactory } = require("@strapi/strapi");
 
 /**
  * table service
  */
 
-const { createCoreService } = require('@strapi/strapi').factories;
+const { createCoreService } = strapiFactory.factories;
 
-module.exports = createCoreService('api::table.table');
+module.exports = createCoreService("api::table.table");

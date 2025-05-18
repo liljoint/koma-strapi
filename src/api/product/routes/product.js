@@ -1,9 +1,11 @@
-'use strict';
+"use strict";
+
+const { default: strapiFactory } = require("@strapi/strapi");
 
 /**
  * product router
  */
 
-const { createCoreRouter } = require('@strapi/strapi').factories;
+const { createCoreRouter } = strapiFactory.factories;
 
-module.exports = createCoreRouter('api::product.product');
+module.exports = createCoreRouter("api::product.product");

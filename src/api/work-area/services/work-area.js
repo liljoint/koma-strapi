@@ -1,9 +1,11 @@
-'use strict';
+"use strict";
+
+const { default: strapiFactory } = require("@strapi/strapi");
 
 /**
  * work-area service
  */
 
-const { createCoreService } = require('@strapi/strapi').factories;
+const { createCoreService } = strapiFactory.factories;
 
-module.exports = createCoreService('api::work-area.work-area');
+module.exports = createCoreService("api::work-area.work-area");
