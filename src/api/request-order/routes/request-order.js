@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-const { default: strapiFactory } = require("@strapi/strapi");
+const strapiFactory = require("@strapi/strapi");
 
 /**
  * request-order router
@@ -8,4 +8,4 @@ const { default: strapiFactory } = require("@strapi/strapi");
 
 const { createCoreRouter } = strapiFactory.factories;
 
-module.exports = createCoreRouter('api::request-order.request-order');
+module.exports = createCoreRouter("api::request-order.request-order");

@@ -67,6 +67,9 @@
     },
     "createKey": {
       "type": "string"
+    },
+    "orderPassword": {
+      "type": "string"
     }
   }
 }

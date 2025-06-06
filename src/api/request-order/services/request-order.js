@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-const { default: strapiFactory } = require("@strapi/strapi");
+const strapiFactory = require("@strapi/strapi");
 
 /**
  * request-order service
@@ -8,4 +8,4 @@ const { default: strapiFactory } = require("@strapi/strapi");
 
 const { createCoreService } = strapiFactory.factories;
 
-module.exports = createCoreService('api::request-order.request-order');
+module.exports = createCoreService("api::request-order.request-order");

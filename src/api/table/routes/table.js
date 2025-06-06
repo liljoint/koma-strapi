@@ -1,6 +1,6 @@
 "use strict";
 
-const { default: strapiFactory } = require("@strapi/strapi");
+const strapiFactory = require("@strapi/strapi");
 
 /**
  * table router

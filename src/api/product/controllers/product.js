@@ -1,6 +1,6 @@
 "use strict";
 
-const { default: strapiFactory } = require("@strapi/strapi");
+const strapiFactory = require("@strapi/strapi");
 
 /**
  * product controller
@@ -8,4 +8,10 @@ const { default: strapiFactory } = require("@strapi/strapi");
 
 const { createCoreController } = strapiFactory.factories;
 
-module.exports = createCoreController("api::product.product");
+module.exports = createCoreController("api::product.product", ({ strapi }) => ({
+  addProduct: async (ctx) => {
+    const { data } = ctx.request.body;
+    console.log(data);
+    return null;
+  },
+}));

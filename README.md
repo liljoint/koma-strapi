@@ -31,7 +31,9 @@ npm run build
 # or
 yarn build
 ```
+
 ## Basic ENV
+
 ```
 HOST=0.0.0.0
 PORT=1337
@@ -39,7 +41,7 @@ APP_KEYS=8YOnpXaInpfUTDN/99YoNQ==,h9ZnLA6srRceZufcHqxnfQ==,drPY+dOQCHjGUeqkqLjfK
 API_TOKEN_SALT=ZElaDJOnGTVQrOquHVN3NQ==
 ADMIN_JWT_SECRET=dbayy7Lyrx0j8s86P4I45g==
 TRANSFER_TOKEN_SALT=t+M3w//Lg9DEc2jQOmPHEw==
-DATABASE_CLIENT=mysql2
+DATABASE_CLIENT=mysql
 DATABASE_HOST=0.0.0.0
 DATABASE_PORT=3306
 DATABASE_NAME=komadb
@@ -49,6 +51,7 @@ DATABASE_ROOT_PASSWORD=koma321
 JWT_SECRET=xFLPGYgb/iV0wWKkOAQ5zA==
 NODE_ENV=development
 ```
+
 ## ⚙️ Deployment
 
 Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
