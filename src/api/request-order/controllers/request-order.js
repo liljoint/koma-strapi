@@ -62,7 +62,7 @@ module.exports = createCoreController(
             },
           });
         const newProducts = [];
-        Promise.all(
+        await Promise.all(
           products.map(async (product) => {
             const orderFounded = orderRequest.orders.find(
               (order) => order.product.productName === product.name,
@@ -76,6 +76,7 @@ module.exports = createCoreController(
               await strapi.documents("api::order.order").update({
                 documentId: orderFounded.documentId,
                 data: orderFounded,
+                status: "published",
               });
             }
           }),
@@ -103,16 +104,18 @@ module.exports = createCoreController(
           orderRequest.orders.push(data);
           return arr;
         }, Promise.resolve([]));
-
-        const res = await strapi
-          .documents("api::request-order.request-order")
-          .update({
-            documentId: orderRequest?.documentId,
-            data: {
-              orders: orderRequest.orders,
-            },
-            status: "published",
-          });
+        const totalAmount = orderRequest.orders.reduce((sum, order) => {
+          sum += Number(order.totalPrice);
+          return sum;
+        }, 0);
+        await strapi.documents("api::request-order.request-order").update({
+          documentId: orderRequest?.documentId,
+          data: {
+            totalAmount,
+            orders: orderRequest.orders,
+          },
+          status: "published",
+        });
         return orderRequest;
       } catch (e) {
         console.log(e);

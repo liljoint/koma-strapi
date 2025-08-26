@@ -376,6 +376,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
   collectionName: 'orders';
   info: {
+    description: '';
     displayName: 'orders';
     pluralName: 'orders';
     singularName: 'order';
@@ -395,8 +396,8 @@ export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     quantity: Schema.Attribute.Integer;
     table: Schema.Attribute.Relation<'oneToOne', 'api::table.table'>;
-    totalPrice: Schema.Attribute.Decimal;
-    unitPrice: Schema.Attribute.Decimal;
+    totalPrice: Schema.Attribute.BigInteger;
+    unitPrice: Schema.Attribute.BigInteger;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -438,6 +439,7 @@ export interface ApiRequestOrderRequestOrder
   extends Struct.CollectionTypeSchema {
   collectionName: 'request_orders';
   info: {
+    description: '';
     displayName: 'requestOrders';
     pluralName: 'request-orders';
     singularName: 'request-order';
@@ -458,12 +460,12 @@ export interface ApiRequestOrderRequestOrder
     > &
       Schema.Attribute.Private;
     orders: Schema.Attribute.Relation<'oneToMany', 'api::order.order'>;
-    partialPayment: Schema.Attribute.Decimal;
-    payment: Schema.Attribute.Decimal;
+    partialPayment: Schema.Attribute.BigInteger;
+    payment: Schema.Attribute.BigInteger;
     publishedAt: Schema.Attribute.DateTime;
     table: Schema.Attribute.Relation<'oneToOne', 'api::table.table'>;
-    tip: Schema.Attribute.Decimal;
-    totalAmount: Schema.Attribute.Decimal;
+    tip: Schema.Attribute.BigInteger;
+    totalAmount: Schema.Attribute.BigInteger;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -492,6 +494,36 @@ export interface ApiTableTable extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     tableAvailable: Schema.Attribute.Boolean;
     tableName: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiWaiterWaiter extends Struct.CollectionTypeSchema {
+  collectionName: 'waiters';
+  info: {
+    displayName: 'waiter';
+    pluralName: 'waiters';
+    singularName: 'waiter';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    isActive: Schema.Attribute.Boolean;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::waiter.waiter'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    password: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1043,6 +1075,7 @@ declare module '@strapi/strapi' {
       'api::product.product': ApiProductProduct;
       'api::request-order.request-order': ApiRequestOrderRequestOrder;
       'api::table.table': ApiTableTable;
+      'api::waiter.waiter': ApiWaiterWaiter;
       'api::work-area.work-area': ApiWorkAreaWorkArea;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

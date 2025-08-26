@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "waiters",
+  "info": {
+    "singularName": "waiter",
+    "pluralName": "waiters",
+    "displayName": "waiter"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "password": {
+      "type": "string"
+    },
+    "isActive": {
+      "type": "boolean"
+    }
+  }
+}

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "order",
     "pluralName": "orders",
-    "displayName": "orders"
+    "displayName": "orders",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -25,13 +26,13 @@
       "target": "api::table.table"
     },
     "totalPrice": {
-      "type": "decimal"
+      "type": "biginteger"
     },
     "quantity": {
       "type": "integer"
     },
     "unitPrice": {
-      "type": "decimal"
+      "type": "biginteger"
     }
   }
 }

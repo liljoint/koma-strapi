@@ -4,7 +4,8 @@
   "info": {
     "singularName": "request-order",
     "pluralName": "request-orders",
-    "displayName": "requestOrders"
+    "displayName": "requestOrders",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -22,16 +23,16 @@
       "target": "api::table.table"
     },
     "payment": {
-      "type": "decimal"
+      "type": "biginteger"
     },
     "tip": {
-      "type": "decimal"
+      "type": "biginteger"
     },
     "isCompleted": {
       "type": "boolean"
     },
     "partialPayment": {
-      "type": "decimal"
+      "type": "biginteger"
     },
     "vouchers": {
       "type": "json"
@@ -40,7 +41,7 @@
       "type": "datetime"
     },
     "totalAmount": {
-      "type": "decimal"
+      "type": "biginteger"
     }
   }
 }
