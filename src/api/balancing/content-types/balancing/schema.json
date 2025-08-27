@@ -11,11 +11,10 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "orders": {
+    "request_orders": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::order.order",
-      "mappedBy": "balancing"
+      "target": "api::request-order.request-order"
     },
     "totalAmount": {
       "type": "biginteger"

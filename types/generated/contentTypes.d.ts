@@ -396,8 +396,11 @@ export interface ApiBalancingBalancing extends Struct.CollectionTypeSchema {
       'api::balancing.balancing'
     > &
       Schema.Attribute.Private;
-    orders: Schema.Attribute.Relation<'oneToMany', 'api::order.order'>;
     publishedAt: Schema.Attribute.DateTime;
+    request_orders: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::request-order.request-order'
+    >;
     title: Schema.Attribute.String;
     totalAmount: Schema.Attribute.BigInteger;
     totalTip: Schema.Attribute.BigInteger;
@@ -423,10 +426,6 @@ export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    balancing: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::balancing.balancing'
-    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
