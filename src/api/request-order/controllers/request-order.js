@@ -92,7 +92,8 @@ module.exports = createCoreController(
             });
           const newOrder = {
             product: currentProduct,
-            totalPrice: product.quantity * currentProduct.productPrice,
+            totalPrice:
+              Number(product.quantity) * Number(currentProduct.productPrice),
             unitPrice: currentProduct.productPrice,
             quantity: product.quantity,
             table: tableFinded,
@@ -101,6 +102,10 @@ module.exports = createCoreController(
           const data = await strapi.documents("api::order.order").create({
             data: newOrder,
             status: "published",
+            populate: {
+              product: true,
+              table: true,
+            },
           });
           orderRequest.orders.push(data);
           return arr;
@@ -117,7 +122,41 @@ module.exports = createCoreController(
           },
           status: "published",
         });
-        return orderRequest;
+        return { ...orderRequest, totalAmount };
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    updateFullOrder: async (ctx) => {
+      try {
+        const { data } = ctx.request.body;
+
+        const orderRequestFull = await strapi
+          .documents("api::request-order.request-order")
+          .update({
+            documentId: data?.documentId,
+            data: data,
+            status: "published",
+            populate: {
+              orders: {
+                populate: {
+                  product: true,
+                  table: true,
+                },
+              },
+              table: true,
+            },
+          });
+        if (orderRequestFull.isCompleted) {
+          await strapi.documents("api::table.table").update({
+            documentId: orderRequestFull?.table?.documentId,
+            data: {
+              tableAvailable: true,
+            },
+            status: "published",
+          });
+        }
+        return orderRequestFull;
       } catch (e) {
         console.log(e);
       }

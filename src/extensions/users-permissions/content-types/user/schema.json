@@ -70,6 +70,9 @@
     },
     "orderPassword": {
       "type": "string"
+    },
+    "isAdmin": {
+      "type": "boolean"
     }
   }
 }

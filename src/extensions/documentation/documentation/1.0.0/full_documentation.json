@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-08-27T12:46:48.209Z"
+    "x-generation-date": "2025-08-27T19:48:56.151Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -24,7 +24,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:1338/api",
+      "url": "http://localhost:1337/api",
       "description": "Development server"
     }
   ],
@@ -5813,6 +5813,9 @@
                     }
                   }
                 },
+                "comment": {
+                  "type": "string"
+                },
                 "createdAt": {
                   "type": "string",
                   "format": "date-time"
@@ -6087,6 +6090,9 @@
               },
               "orderPassword": {
                 "type": "string"
+              },
+              "isAdmin": {
+                "type": "boolean"
               },
               "createdAt": {
                 "type": "string",
@@ -7674,6 +7680,9 @@
                 ],
                 "example": "string or id"
               },
+              "comment": {
+                "type": "string"
+              },
               "locale": {
                 "type": "string"
               },
@@ -8390,6 +8399,9 @@
               }
             }
           },
+          "comment": {
+            "type": "string"
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -8501,6 +8513,9 @@
                       "type": "string"
                     }
                   }
+                },
+                "comment": {
+                  "type": "string"
                 },
                 "createdAt": {
                   "type": "string",

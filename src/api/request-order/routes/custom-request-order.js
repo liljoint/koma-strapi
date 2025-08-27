@@ -10,5 +10,10 @@ module.exports = {
       path: "/request-order/update-request-order",
       handler: "api::request-order.request-order.updateRequestOrder",
     },
+    {
+      method: "POST",
+      path: "/request-order/update-full-order",
+      handler: "api::request-order.request-order.updateFullOrder",
+    },
   ],
 };
