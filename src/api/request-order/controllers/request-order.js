@@ -71,6 +71,7 @@ module.exports = createCoreController(
               newProducts.push(product);
             } else {
               orderFounded.quantity += Number(product.quantity);
+              orderFounded.observation = product?.observation;
               orderFounded.totalPrice =
                 orderFounded.quantity * orderFounded.unitPrice;
               await strapi.documents("api::order.order").update({
@@ -95,7 +96,7 @@ module.exports = createCoreController(
             unitPrice: currentProduct.productPrice,
             quantity: product.quantity,
             table: tableFinded,
-            observation: "",
+            observation: product?.observation,
           };
           const data = await strapi.documents("api::order.order").create({
             data: newOrder,
