@@ -373,6 +373,44 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiBalancingBalancing extends Struct.CollectionTypeSchema {
+  collectionName: 'balancings';
+  info: {
+    description: '';
+    displayName: 'balancing';
+    pluralName: 'balancings';
+    singularName: 'balancing';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    balanceDate: Schema.Attribute.DateTime;
+    comment: Schema.Attribute.Text;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::balancing.balancing'
+    > &
+      Schema.Attribute.Private;
+    orders: Schema.Attribute.Relation<'oneToMany', 'api::order.order'>;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    totalAmount: Schema.Attribute.BigInteger;
+    totalTip: Schema.Attribute.BigInteger;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    users_permissions_user: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+  };
+}
+
 export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
   collectionName: 'orders';
   info: {
@@ -385,6 +423,10 @@ export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    balancing: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::balancing.balancing'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -470,6 +512,7 @@ export interface ApiRequestOrderRequestOrder
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     vouchers: Schema.Attribute.JSON;
+    waiter: Schema.Attribute.Relation<'oneToOne', 'api::waiter.waiter'>;
   };
 }
 
@@ -1071,6 +1114,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::balancing.balancing': ApiBalancingBalancing;
       'api::order.order': ApiOrderOrder;
       'api::product.product': ApiProductProduct;
       'api::request-order.request-order': ApiRequestOrderRequestOrder;

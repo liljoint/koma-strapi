@@ -33,6 +33,12 @@
     },
     "unitPrice": {
       "type": "biginteger"
+    },
+    "balancing": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::balancing.balancing",
+      "inversedBy": "orders"
     }
   }
 }

@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "balancings",
+  "info": {
+    "singularName": "balancing",
+    "pluralName": "balancings",
+    "displayName": "balancing",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "orders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order.order",
+      "mappedBy": "balancing"
+    },
+    "totalAmount": {
+      "type": "biginteger"
+    },
+    "totalTip": {
+      "type": "biginteger"
+    },
+    "comment": {
+      "type": "text"
+    },
+    "balanceDate": {
+      "type": "datetime"
+    },
+    "title": {
+      "type": "string"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}
